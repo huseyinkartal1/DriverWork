@@ -19,6 +19,10 @@ public class BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    /**
+     *
+     * @param locator
+     */
     public void click(By locator){
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
