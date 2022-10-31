@@ -2,20 +2,18 @@ package temp;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.BaseTest;
 import pages.LocatorInterface;
-import utils.Driver;
 import utils.Waits;
 
 import java.sql.*;
+import java.util.List;
 
 public class ScrollToMail extends BaseTest implements LocatorInterface {
-
-    WebDriver driver;
     Connection conn;
     Statement statement;
     ResultSet resultSet;
@@ -23,12 +21,15 @@ public class ScrollToMail extends BaseTest implements LocatorInterface {
 
     @BeforeTest
     public void beforeTest() throws SQLException {
+
         conn = DriverManager.getConnection(
                 "jdbc:mysql://142.93.110.12:3306/admindashboarddb",
                 "gsuser",
                 "Gsuser!123456");
         statement = conn.createStatement();
-        resultSet = statement.executeQuery("SELECT email FROM customers WHERE id=1341;");
+        statement.setQueryTimeout(30);
+        resultSet = statement.executeQuery("SELECT email FROM customers WHERE id=123;");
+        resultSet.next();
         email = resultSet.getString(1);
         conn.close();
         statement.close();
@@ -53,9 +54,10 @@ public class ScrollToMail extends BaseTest implements LocatorInterface {
         click(By.xpath("//header//a[./span[text()='Customers']]"));
         waitForElement(By.cssSelector("datatable-header"), Waits.VISIBILITY);
         while (true){
-            scrollBy(100);
-            By emailLocator = By.xpath("//span[text()='" + email+ "']");
-            if (driver.findElements(emailLocator).get(0).isDisplayed())
+            scrollBy(700);
+            By emailLocator = By.xpath("//span[text()='" + email + "']");
+            List< WebElement> list = driver.findElements(emailLocator);
+            if (list.size()>0 && list.get(0).isDisplayed())
                 break;
         }
     }
@@ -64,4 +66,6 @@ public class ScrollToMail extends BaseTest implements LocatorInterface {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0," + val +")");
     }
+
+
 }
