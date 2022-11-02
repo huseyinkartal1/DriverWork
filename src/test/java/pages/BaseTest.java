@@ -1,10 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Driver;
+import utils.MyElement;
 import utils.Waits;
 
 import java.time.Duration;
@@ -42,4 +46,11 @@ public class BaseTest {
         }
     }
 
+    public void hover(WebElement element){
+        new Actions(driver).moveToElement(element).build().perform();
+    }
+
+    public void scrollIntoView(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", element);
+    }
 }

@@ -35,4 +35,6 @@ public class SelenideClass {
                 .forEach(n-> System.out.println(n.getText()));
 
     }
+
+
 }
