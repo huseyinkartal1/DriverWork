@@ -43,6 +43,7 @@ public class ScrollToMail extends BaseTest implements LocatorInterface {
     @Test
     public void login(){
         driver.get(url);
+
         sendKeys(usernameInputLogin, "demo");
         sendKeys(passwordInputLogin, "demo");
         click(buttonSubmitLogin);
@@ -56,7 +57,7 @@ public class ScrollToMail extends BaseTest implements LocatorInterface {
         while (true){
             scrollBy(700);
             By emailLocator = By.xpath("//span[text()='" + email + "']");
-            List< WebElement> list = driver.findElements(emailLocator);
+            List<WebElement> list = driver.findElements(emailLocator);
             if (list.size()>0 && list.get(0).isDisplayed())
                 break;
         }
