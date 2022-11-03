@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BaseTest;
 
@@ -10,6 +11,10 @@ public class Jenkins01 extends BaseTest {
         driver.get("https://www.amazon.com");
 
         Thread.sleep(3000);
+
+
+        Assert.assertEquals(driver.getTitle(),"apple");
+
 
         driver.quit();
 
