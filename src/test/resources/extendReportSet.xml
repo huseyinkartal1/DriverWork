@@ -12,10 +12,10 @@
         <protocol>https</protocol>
 
         <!-- title of the document -->
-        <documentTitle>Basqar extend report</documentTitle>
+        <documentTitle>Extend report</documentTitle>
 
         <!-- report name - displayed at top-nav -->
-        <reportName>Basqar report</reportName>
+        <reportName>Report</reportName>
 
         <!-- global date format override -->  <!-- defaults to yyyy-MM-dd -->
         <dateFormat>yyyy-MM-dd</dateFormat>
