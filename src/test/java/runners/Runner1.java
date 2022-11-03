@@ -12,8 +12,10 @@ import utils.Driver;
 @CucumberOptions(
         features = {"src/test/java/features/Feature1.feature"},
         glue = {"stepdefs"},
-        tags = "@Tag1"
+        tags = "@Tag1",
+        plugin = { "pretty", "html:test-output/cucumber-reports/Cucumber.html"}
 )
+
 
 public class Runner1 extends AbstractTestNGCucumberTests {
 
