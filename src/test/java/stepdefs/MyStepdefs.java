@@ -30,6 +30,7 @@ public class MyStepdefs extends BaseTest implements LocatorInterface{
 
     @Then("login should be successfull")
     public void loginShouldBeSuccessfull() {
+        System.out.println("Feature 1 başarılı Jenkins");
         waitForElement(buttonLogout, Waits.VISIBILITY);
     }
 }
